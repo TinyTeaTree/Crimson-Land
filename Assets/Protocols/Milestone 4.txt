@@ -1,0 +1,25 @@
+*** Milestone 4 ***
+
+** In this milestone we want to turn our battle ground into a winnable scene that provides completion status. And in that way we can create a sequence of battlegrounds that progress when you complete them. For that the user system needs to change in order to support multiple users and their progresses. Users will no longer be destroyed when they die, they will simply fail the current battleground and have their economy effected. The battlegrounds will drop goods and also reward for completion and achievments. The rewards will be used to level up and purchase items in the shop. The game will also have survival mode that never ends, When you die or quit you will go to the game over high score page, the survival mode will use the weapons and levels of your character **
+
+0.1) Change the user system, to support multiple users.
+
+0.2) Add a System File for properly containing system information 
+
+1) Make battleground winnable / losable. At the end you will have a pop up statistics of your overall score, and if you win your rewards. And then you will go back to the Menu scene.
+
+2) Make the battleground information installable at its initialization.
+
+3) Expand menu scene to hold different battlegrounds. The user will be able to enter each battleground that he chooses
+
+4) Add the equipment page where you can gear up the hero with whatever weapons you have available and slots that you have open.
+	.Add the save fragment for the weapons you own.
+
+5) Add the level up page which will be a place where you will be able to level up
+	.Capacity	
+	.Life	
+	.Speed	
+	.You will also be able to purchase additional weapon slots, and abilities.
+	
+5) Make Mobs and battlegrounds drop goodies and have rewards and achievments.
+	.Make save fragment for the economy information

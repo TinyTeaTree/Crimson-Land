@@ -1,0 +1,74 @@
+*** Milestone 3 ***
+
+** In this milestone we will try to achieve a full fledged picture of the structure
+and feel of our game. We will construct all the scenes for our game, and populate
+them with the basic enteties that they require to function. **
+
+1) Add UI to the battlfield : Life bar, Score, and current weapon.
+
+1) Create a mani menu scene. This scene will provide the ability to load our game
+or create a new game which will override our old game.
+
+2) Create the game over screen which will display the score versus the top 
+highscores of the game, credits. And an option to go back to main menu.
+
+
+5) create the mob spawn sequencer that will be level design friendly. mayhaps
+realtime mob spawner that will record the timings of mobs and spawn stuff from
+outside the barrier.
+
+6) upgrade the camera follow driver to angle lerp like acceleration for unique
+3D effect ( watch out for borders ), (DO NOT LOOKAT THE TARGET, makes sickening effect)
+
+7) Make the Hit and Die effects more apparent so that you would be more aware of
+their incident.
+(Options: Life bar blink, Damage number UI float over hero, slow down to movement accelaration, Camera Impulse effect, Blood particle effect, Sound hit effect, Mob animation play,)
+
+	7A) will make a life bar blink effect.
+	
+	7B) will make a world UI.
+	
+	7C) will make a damage number over hero head.
+	
+	7D) will make a hero die animation.
+	
+	7E) will make a gameover UI fade into canvas.
+	
+	7F) will make a camera zoom in go out effect.
+
+
+8) Create 3 more gun types and 5 more mob types and 1 more move AI type
+Spray Gun, Sprints Gun, flame thrower (Delayed for after particle world will be created).
+
+add reload mechanics to all guns
+
+add reload to UI, and bullet visualization,
+
+add reload manual input.
+
+add feedback power to bullets to guns
+
+9) Protocols About Scripting/Commenting/Placment Conventions
+
+9) Pause ability in the battleground with proper exit
+
+10) Make a device info profiler, (or copy ofers device)
+
+** In order to structuraly build the shop and customization screen, we need
+to turn our battlground to replayable and winnable, and have an intermediate
+scene where you can enter your shop area, and customization area, and enter
+battlegrounds ** ** Milestone 4 **
+
+1) Make an intermediate menu scene from which you can enter battleground
+or shop, or customization
+
+2) Make a battleground winnable and have information about it in the menu
+
+3) Create many battleground variations and have them be choosen from the main
+menu.
+
+4) create the shop screen where you purchase weapons and armors suits for the
+character and bullets.
+
+3) create the customization screen, where you lvl up the character and gear him
+up with stuff you bought in the shop.

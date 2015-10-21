@@ -1,0 +1,72 @@
+*** Project Scripting, Commenting, Naming, Placing Conventions ***
+ 
+ 
+** Scripting Conventions **
+
+	. All scripting Must be done with Visual Studio
+	. All scripts should be set to have the Windows line endings. File->Advanced Options->Line Endings-> Windows (CR - LF). Find the script template and set its line endings.
+
+	. All class names are CamelCased
+	. All Interfaces are CamelCased with 'I' before the first letter. exp: IIterable, IPushable
+	. All Abstract classes are CamelCased with 'A' before the first letter. exp: AShape, AGun
+
+	. Use the Stroustrup {
+		bracket style Everywhere !!!
+	}
+	
+	. Do NOT use the "private" keyword. The default access modifier is sufficiant.
+	
+	. All public function names are CamelCased. 
+	exp: public void FooBoo(){ }
+	. All private function names are lowerCamelCased. 
+	exp: void fooBoo(){ }
+	
+	
+	. All variables are lowerCamelCased.
+	exp: int yo;
+	exp: string cocoMajo;
+
+* Script Order *
+
+	1) Inspector visible members
+	2) private and Inspector Invisible members
+	3) Unity callbacks
+		.OnLevelWasLoaded
+		.Awake
+		.Start
+		.Update
+		.OnEnable
+		.OnDisable
+		.Others
+	4) public functions
+	5) private functions
+	6) enumerators
+
+** Commenting Conventions **
+
+	. Each script that has one of the following commenting necesseties shall have a comment section produced by the Tripple /// of Visual Studio {
+	
+		. If a scripts placment in the heirarchy is relevant and not obvious, in cases where it uses the components of itself or thy neighbors. The script must comment of the placment policies in the comment section.
+		
+		. If a scripts Components or its neighbors components are of any significance. The script must comment the component dependencies in the comment section.
+		
+		. If a scripts purpose is relevant and not obvious. The script must specify its purpose in the comment section
+		
+		. If a script has strict requirements and dependencies upon other scripts. Then the script must explain the dependencies and requirements in the commenting section. And the depend-upon script must have a mention of the dependant script in its commenting section.
+
+	}
+
+** NEVER DOO's **
+
+	. StartCoroutine from script A on script B.
+	. Destory object A from Object B. Instead have object A have a Destroy function that manages its own destruction.
+	. Inject into the Unity Button custom listeners (This will cut off any debug chain searches), instead use a custom UnityEvent.
+
+** MUSTS **
+
+	. Keep all paths for Resources and I/O in a "Paths" Script using a public static string.
+	. Keep all tags in a "Tags" Script using a public static string.
+	. Keep all scene names in a "TagsLocation" script using a public static string.
+	. If an object is dynamic in a scence that it is created and destoryed during runtime of a scene. Then, it must implement the Destroy function that cleans up.
+	. The script that does Resources.Load must also perform the Resource.Unload at the appropriate time.
+	. Every Single Script Must clean up all references OnDestroy(). Especially the ones that are dynamic.

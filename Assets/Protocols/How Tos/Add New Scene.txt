@@ -1,0 +1,9 @@
+How to add a new Scene.
+
+1) Create a new folder in the _Scenes
+
+2) Create a new scene and save it in the folder
+
+3) Add the new scene to the Build Settings
+
+4) Go to TagsLocations Script and add the new Scene proxy there as well.

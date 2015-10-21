@@ -1,0 +1,13 @@
+How to add a new battleground.
+
+1) Locate the Battles Data under the Data File.
+
+2) Add a new element.
+
+3) Choose a floor prefab from the _Scenes/Battleground/Props/Terrain folder
+(See add new terrain for more info)
+
+4) Choose a mob spawner from the _Scenes/Battleground/Props/Spawner folder
+(See add new mob spawner for more info)
+
+5) Go to Main Menu scene. turn on the Battle Choices Group all the way up (under UI). and add a battle button.

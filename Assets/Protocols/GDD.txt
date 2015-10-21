@@ -1,0 +1,203 @@
+***********************
+*** Zombie Splatter ***
+*** 19,8,2015    ******
+***********************
+
+** Concept **
+In this game the player gets to shoot down storm of monsters from a top
+down view with many different guns and abilities for survival. The game
+will be arcade shooting based. where dexterity and time investments are
+relevant in order to achieve better rewards. 
+
+** Break Down **
+* Scenes *
+	1) Main menu: here we can load our game and create a new game which
+	will reset our game. Also provide some customization settings for
+	the graphics and application.
+
+	2) Loading screen: here we perform all the transition logic between
+	our scenes
+	
+	3) Shop screen: here we will provide all the shoping items for the game
+	to use
+	
+	4) Customization: here we will provide the player customization of the
+	inherit features of the character. like level ups for time invested.
+	
+	5) Battleground *3: Three unique battlegrounds upon which we build the game
+	itself. We will be able to shot, run around, collect items and currency.
+	
+	6) High score / Game Over screen / Buy stuff and advertisment .
+	
+* Tech *
+
+	1) 3D characters low smooth poly like with animation for running and shooting
+	and attacking and dieing.
+	
+		A. For the first step it will suffice to have cubes serve for characters
+		However the character logic must be replacable with an interchange of the
+		main prefab. Thus the cubes must be recognized by the system as Avatar /
+		Opponents and all the necessary locomotion drivers must be able to drive them
+		as though they are the actuall model. Each model will have its own collidable
+		territory.
+		
+			B. In the second step the models will only have to resemble the final
+		form so that the proper animation logic could be implemented on top of them.
+		They will perform the animations so that their animators will be properly
+		configured. And all throughout each model will have the ability to be replaced
+		for any of the avatars by just the replacing the model. This means that there
+		is no hard coupling between the locomotion driver, and the model, and the 
+		avatar property. 
+		
+			C. In the third step we will create the final form of the models for our
+		game. The concept art part will be skipped. And then the optimization
+		process will claim the right to adjust any qualities of the models in 
+		order to make the game mobile friendly.
+	
+	
+	2) Battleground fields with collidable objects
+	
+		A. In the first step we will use a plain with a texture on it
+	
+		B. In the second step we will add collidable shapes to the terrain
+		
+		C. In the third step we will upgrade our terrains to be high quality
+		and pleasable to the eye
+	
+	3) Locomotion driver for computer and mobile
+	
+		A. The first step of the locomotion driver is to apply a testable
+		wasd keys for movement. This will be done with the Translate() 
+		techinque as it is the easiest. While the rotation will always be
+		towards the mouse. The camera will always follow the player.
+		
+		B. In the second step we will switch up to use physics to controll
+		the character. The character will then have natural accelarations for
+		movement and rotation limits for following the mouse. The camera will
+		lerp smoothly towards the player.
+		
+		C. In the third step we will fine tune our locomotion driver and 
+		attach it to the animation system of our character. so that fields
+		in the animation are driven by run time physics properties such as
+		local velocity. The camera try to show more of the direction in which
+		the player is heading towards related to how far his mouth is from the
+		player.
+	
+	4) Projectile and Gun shooting
+	
+		A. In the first part we will create a basic gun and projectile with
+		constant speed that spawns from the end point of the gun and flyies in the
+		direction of the gun untill it hits the target or expires.
+	
+		B. In the second step we will generalize and separate the gun from 
+		the projectiles and have three different guns and three different 
+		projectile types. we will have properties for guns like rate of fire
+		and reloading speed. And we will have properties for bullets like
+		fly speed and hit damage. We will be able to interchange the bullets
+		from gun to gun with just a switch in the prefab which the gun shoots.
+		
+		C. In the third step we will create a diversity of gun and bullet types
+		they will include fast bullets, heavy bullets, rapid fire guns, fast
+		reload guns, shot guns, and all various and relatively easy to implement
+		gun types. We will focus on fine tuning the phisical properties of the
+		bullets. And add recoil to guns
+		
+		D. We will add the special effects and make the bullets fire and freeze
+		effects for fancy stuff.
+		
+	5) Enemy AI, Upon a given set of Mobs, AI would be the varibles of when
+	to spawn, who to spawn, and how do they behave.
+	
+		A. At first we will have a preset sequence of spawning positions and
+		timings to specific mobs. The behaviour of each mob will be an attached
+		component on each mob. However this component should be more generic
+		so that future iterations on this Component will work. Differenct
+		Algorithms for Mob behaviours will be added dynamically on mobs.
+
+	6) Field lvl system. This is not the lvl of the player, but the lvl of the
+	battleground. Each battleground will have different lvls, meaning that you
+	could have different experience when playing it. For example you could have
+	a basic tutorial where one mob spawns each 3 seconds. Or you could have an
+	intense Survival mode where you spawn 5 mobs per second. Different variations
+	of the battle are called field lvls. The system for this will be achieved
+	by decoupling the field lvl properties into a plugable prefab.
+	
+	7) Collectibles
+	
+		A. At first we will not have any collectibles.
+	
+		B. Our basic collectibles shall be currency and Health boosts, they will
+		be very basic props that hover on the ground
+		
+		C. More advanced collectibles will boost weapon properties, this will
+		be made after the weapon properties will be properly installed. 
+		
+		D. The collectibles will recieve particle glows and stuff after their
+		gameplay tuning has been realized.
+	
+	8) Persistant saving of the game state on the local machine
+	
+		A. We will require a powerfull and versetile saving game mechanism.
+		This mechanism will also serve us in other games. Thus, we will make
+		a prefab for save state that will serve generic saving mechanisms.
+	
+	9) UI
+	
+		A. We will use UI in all stages in the game ofcoarse. The requirements
+		from the UI will be. Resolution portable, lightwheight, eye pleasing,
+		and touch friendly. In the first stage the UI will not move or change
+		its states to much
+		
+		B. In the second stage our UI will be fading in and out whenever 
+		transitions in the UI state will be called.
+		
+		C. In the third stage we will construct custom UI animaitons for
+		the transitions.
+	
+	10) Sound system
+	
+		A. In the first stage we will make a centralized sound system. It
+		will be a generic sound solution for this game and future games that we
+		make. It will exhibit a single prefab that all the sound AudioSource is 
+		found under it. In this way we make a centralized place for adjusting sound
+		in our game. As we build our centralized sound system we should document
+		the process of adding sounds into our game. So as to become more knowledgable.
+		about how to make sounds in games properly with Mixers and stuff.
+	
+		B. We will add unlicensed music and sound effects to our game, but as
+		time progresses we will try to aqcuire real sounds that we can use.
+	
+	11) In game purchases and advertisments
+	
+		A. Research as this field has never before been explored
+	
+	12) Optimized for fast runs on mobiles
+	
+		A. Document and Research.
+	
+
+	
+** Milestones **
+
+	1) We want to reach a state where we have a playable game up and running.
+	For that we need to construct a basic battlground with a locomotion driver
+	and basic enemy AI.and player avatar with properties (health and speed).
+	In this first milestone we will be plaing and shooting mobs untill we get
+	flocked and die.
+	
+	2) For the second milestone we want to make the process of configuring
+	the game more Designer friendly. We will create basic configurations for
+	the mob AI patterns and have prefabs of those patterns so we can replace
+	the what happenes on the battlgrounds with ease. This will be the birth of
+	the Field lvl system.
+	
+	3) This is the most important milestone there is. We must set up the overall
+	structure of our game. We need to create all our scenes and the transitions
+	between them. We need to be able to save the gamestate and have the overall
+	structure and feel of the game. We will also release working builds for our
+	game.
+	
+	4) To be continued.
+	
+	
+

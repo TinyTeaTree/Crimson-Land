@@ -1,0 +1,30 @@
+How to add a new Save Fragment.
+
+1) Locate the Save File under globals and create a new GameObject
+
+2) Locate the SaveFragment script folder and add a new Script to it,
+this shall be your fragment
+
+3) Inherit from SaveFragment
+
+4) Implement abstract class
+
+6) Create a [System.Serializable] data structure that will hold all the 
+members that need to be saved.
+
+7) send the data structure as a return to Serialize()
+
+8) in the Deserialize() cast the graph to the data structure and assign it
+instead of your empty one.
+
+9) Implement the Reset() function, it is supposed to clean up the fragment to the state that
+it belongs to noone and is ready to be deserialized. Call the base.Reset() in order to clean all controll data as well.
+
+10) add a proxy reference to the save file above it.
+
+11) make sure that whenever a change to the data is made, that the newInfoPresent flag is
+set to true
+
+
+12) The name of the gameobject of the save fragment on which it is component of,
+is the name of the file. make sure no duplicates.

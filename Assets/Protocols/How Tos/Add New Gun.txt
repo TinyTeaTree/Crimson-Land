@@ -1,0 +1,28 @@
+How to add a new Gun
+
+1) Locate the _Scene/Battleground/Props/Guns folder
+
+2) Create a new sub folder for your gun
+
+3) Create/Import/Copy the mesh object and place under the "Gun Anchor" and zeroize the position 
+and rotation. The gun should be resting in its final position in this state.
+
+4) Name your gun
+
+5) Create a script for your gun
+
+6) Inherit from Gun, or from a Gun inheriter.
+
+7) override PressedShoot and UnpressedShoot and DONT call base!!!
+
+8) override SpawnBullet if you so wish, or implement your own
+
+9) Create a gun icon 128X64
+
+10) Connect to gun script the Icon, Anchor, and Bullet prefab.
+
+11) Make a prefab from the gun
+
+12) In the battleground controller, add the available gun to the array.
+
+13) In the key code driver of the input manager, add the number to the gun.

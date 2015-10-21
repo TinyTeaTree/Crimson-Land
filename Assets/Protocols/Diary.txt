@@ -1,0 +1,64 @@
+*** Diary ***
+
+** 4,9,2015: The first prototype of the game has been built. **
+We have a character running around shooting monsters. While the mosters die after x amout of hits. We also have a resolution fitter.
+
+	The constituting compenents are
+
+	Battleground Controller : holds and maintanis all the seperate managers.
+		Mob Spawnner : spawns mobs of a givven prefab, at random times
+
+	Avatar : A prefab that the user controlls using the Input Manager
+		Avatar Locomotion / Locorotation. responsible for moving and rotating the avatar.
+		Gun : a basic gun that shoots the bullets it has.
+
+	Floor with boundries for camera and avatar.
+
+	Input Manager : the cetralized place for all input.
+
+	Mob : a prefab that knows how to move towards the avatatr. has a behavoiur seperated from the movement script.
+
+	Global Controller: holds the things that the game needs and is cross scene singletoned
+
+		Event Registery : can be captured to invoke custom events. used for attaching the resolution changed
+		event to the camera attachment;
+
+	AttachPositionToCamera: sets up camera to follow and stop properly and be notified whene resolution event happened.
+
+** 3,10,2015: User Theory **
+Today was the first redesign of the structure of the game, it was due to improper choice of the user design, and so I decided to expand and officialize the user design choices, in order to understand better their nature.
+
+There are three user design configurations.
+	.Instance user base
+	.Device user base
+	.Congruent local user base
+	.Congruent network user base
+
+In Instance user base, there are practically no users. Every time you start up the game, a user is created and is played on that instance of the game, untill the game is shut down or restarted. A name does not need to be provided. If the game presents a score and requires a highscore table, then the usename can be requested at the highscore table. Essentially in this user configuration there is no identification that a user exists and no infrastructure for saving any data is required outside of the highscore table, if exists. The only UI required to start the game for the user is either no UI and immediatly start. Or a start button at the first menu scene. Examples are Tetris.
+
+In Device user base, A user is created and attached to the device. And there can be only one user on that device at any given point in time. Essentially this means that the device itself can serve as the user credentials. The user can enter and exit the game as much as he wants. And any data pertaining to the user is maintained through out the sessions. A Basic saving infrastructured is required to save the data of the user. The user is not required to provide a name for the game. If a name is required for a highscore table. The name can be requested at the highscore signup. The minimal UI required for such configuration is the same as in Instance user base, with an option to reset the user if such an option is part of the game design. Reinstalation of the game itself on the device or playing the game on another device means that a different user will be assotiated. Example: Hill Climb Racing
+
+In Congruent local user base, multiple users can be maintained and created. Each user needs to be identified by a name. The users themselves are still dependent on the local device. A different device will not be able to access users created on another device. At the start of each session there must be a user choice screen where you choose with which user to start playing. A Complex infrastructure of saving must be implemented to save the data of each user. There must also be an option to create users, and destroy users. And thus the minimal UI required is such that has. User Creation, user Selection, user Eradication, and a start button to start the game once a user has been selected.
+
+In Congruent network user base, a user can be accessed on any machine with the game installed. And thus also requires a password. (Advanced).
+
+In the design stage of every game before doing any work. The proper User Design Configuration must be choosen. And the rest of the design of the game must be compliant with the User Design Base.
+
+** 6,10,2015 Saving System. **
+The second reconstruction in the game was due to lack of understanding of how to fit a saving system to a game design. And so this entry is dedicated to better understanding how to properly choose and configure a persistance system into a game.
+
+There are three different saving enteties
+
+	.System File
+	.Save File
+	.Global File
+	
+System File: this is the file that holds system information about the proper maintanance of the game. This file is not always necessary, but is always recomended to have for easy future expansion of the game. Things that are proper to place here are user preferences and information about the users in case a "Congruent User Base" design has been choosen (see above). This is important to note, that no personal information about the session of a players game should be saved here.
+
+Save File: this is where all the personal game information for a specific user is saved. In essence there can be many save files maintained in memory for many users if multiple users are enabled.
+
+Global File: this is where global game data can be saved. This can be served for two purposes. 1 - to centralize all the global configurable information into a specific place. 2 - to have the global file outside of the game so it can be changed from an outside source and replaced, thus making able to change the game without the need to update it.
+
+*Fragmentation Note* - fragmentation is the process of deviding a file into logical fragments. In order to maintain such a construct, the serialization process must be able to construct itself from many small serializations, and each fragment maintain its own serialization process according to the file rules. The foremost benefit of such an organization is to have a logical seperation of the saving system. Where each component of the game that requires saving services recieves its own place of maintanance. The second benefit can be affiliated with the performance field. By having a fragmented file, the changes in fragments can allow for the file to save only individual fragments that require saving, thus reducing unecessary saving calls.
+
+*Serialization vs Jsonization Note* - Serialization is a native process of saving .NET objects while Jsonization makes readable, custumizable output. 

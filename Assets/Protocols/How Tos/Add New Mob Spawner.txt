@@ -1,0 +1,19 @@
+How to add a new Mob Spawner type.
+
+** A Mob Spawner is a part of Mob Spawning System. Which in turn is comprised of many
+Mob Spawners. Each Mob Spawner has a Unique algorithm for spawning Mobs. The System's role
+is to controll the timing of when each Mob Spawner starts spawning. **
+
+1) Locate Folder _Scenes/Battlegrounds/_Scripts/Spawners/Spawners
+
+2) Create a new Script
+
+3) Inherit from MobSpawner
+
+4) Override StartSpawningCycle() and StopSpawningCycle(), They will be called acordingly
+to the time and duration floats set on the scripts.
+
+5) StopSpawningCycle() must call base if overriden!
+
+5) To use the Mob Spawner - Place the MobSpawner script as a Component on a Scene Object 
+under the "Mob Spawner" Object under "Battleground Controller" Object.

@@ -1,0 +1,21 @@
+We want to reach a state where we have a playable game up and running.
+	For that we need to construct a basic battlground with a locomotion driver
+	and basic enemy AI.and player avatar with properties (health and speed).
+	In this first milestone we will be plaing and shooting mobs untill we get
+	flocked and die.
+	
+1) Build terrain
+
+2) Build player avatar
+
+3) Build basic locomotion driver
+
+4) Build mobs
+
+5) Build basic mobs Behaviour
+
+6) Build basic mobs spawner AI
+
+7) Build shooting capabilities
+
+* Keep project neet and orginized

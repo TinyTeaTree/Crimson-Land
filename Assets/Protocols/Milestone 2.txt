@@ -1,0 +1,31 @@
+We want to enhance the genericness of the properties that make up the battlground.
+The Gun and Mob type need to be interchable and configurable as easy as drag and
+drop. And the AI of the mobs also.
+
+Also we want to start developing and Persistant saving and
+for the game. For that we want to already implement the score
+parameter which will be used for the highscore which will be provided by the 
+storage and thats it for now.
+
+Give Mobs the ability to attack the avatar.
+
+Give bullets max traveresed distance parameter.
+
+Make three different mob types.
+
+Make the Mob spawner be able to spawn them.
+
+Make three different movement algorithms for mobs, have the movement as easily
+interchanged as changing component types.
+
+Make Three gun types.
+
+Make the changing of guns as simple as Instantiating the gun.
+
+Make three different battlegrounds and have the battlegrounds be easily 
+interchanged.
+
+Make a persistant saving module that will let us have the ability to load the
+high score
+
+
